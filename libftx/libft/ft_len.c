@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_len.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/22 16:45:24 by rimarque          #+#    #+#             */
+/*   Updated: 2023/05/17 18:35:23 by rimarque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/libft.h"
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+size_t	ft_strclen(char const *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (*s != c && *s)
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
+
+size_t	ft_arrlen(char **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i] != NULL)
+	{
+		i++;
+	}
+	return (i);
+}
+
+//#include <stdio.h>
+/*int main()
+{
+    const char *str;
+
+    str = "rita";
+    printf("%s is: %u\n", str, ft_strlen(str));
+    str = "outlander; ";
+    printf("%s is: %u\n", str, ft_strlen(str));
+    str = "";
+    printf("%s is: %u\n", str, ft_strlen(str));
+    return (0);
+}*/
