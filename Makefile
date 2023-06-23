@@ -6,7 +6,7 @@
 #    By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 12:57:07 by rimarque          #+#    #+#              #
-#    Updated: 2023/06/01 19:20:45 by rimarque         ###   ########.fr        #
+#    Updated: 2023/06/23 18:52:36 by rimarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ NPD		= --no-print-directory
 CMLX	= -Ilmlx -lXext -lX11 -lm
 
 #-----------------------------------  FOLDERS  --------------------------------
-SRC = .
-SRC_MAND =
-SRC_BONUS =
+SRC_PATH = .
+SRC_MAND_PATH =
+SRC_BONUS_PATH =
 LIBFT_PATH = ./libftx
 MLX_PATH = ./mlx
 
@@ -44,7 +44,11 @@ LIBFT = ./libftx/libft.a
 
 MLX = ./mlx/libmlx.a
 
-# OBJ = $(SRC)/fdf.o
+SRC = $(SRC_PATH)/fdf.c \
+		$(SRC_PATH)/read_map.c \
+		$(SRC_PATH)/list.c \
+		$(SRC_PATH)/math.c \
+
 
 #OBJ_MAND = $(SRC_MAND)/
 
@@ -60,12 +64,12 @@ $(LIBFT):
 	make $(NPD) -C $(LIBFT_PATH)
 
 $(MLX):
-	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)LIBFT$(RESET)"
-	make $(NPD) -sC $(MLX_PATH)
+	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)MLX$(RESET)"
+	make $(NPD) -C $(MLX_PATH)
 
 $(NAME): $(OBJ_MAND) $(LIBFT) $(MLX)
-	echo "[$(CYAN) Linking $(RESET)] $(GREEN)*$(RESET)"
-	$(CC) $(CFLAGS) fdf.c $(MLX) $(CMLX) $(OBJ_MAND) $(OBJ) $(LIBFT) -o $(NAME)
+	echo "[$(CYAN) Linking $(RESET)] $(GREEN)$(RESET)"
+	$(CC) $(CFLAGS) $(SRC) $(MLX) $(CMLX) $(LIBFT) -o $(NAME)
 	echo "$(GREEN)Program READY!$(RESET)"
 
 #bonus: $(NAME_BONUS)

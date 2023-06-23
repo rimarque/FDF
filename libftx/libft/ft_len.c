@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:45:24 by rimarque          #+#    #+#             */
-/*   Updated: 2023/05/17 18:35:23 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/06/23 14:47:36 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
+
+	if (!str)
+	{
+		write(1, "error: NULL string", 20);
+		return(1);
+	}
 
 	i = 0;
 	while (str[i] != '\0')
@@ -28,6 +34,11 @@ size_t	ft_strclen(char const *s, char c)
 {
 	size_t	len;
 
+	if (!s)
+	{
+		write(1, "error: NULL string", 20);
+		return(1);
+	}
 	len = 0;
 	while (*s != c && *s)
 	{
