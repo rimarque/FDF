@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:16:52 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/22 10:45:50 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:46:18 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,7 @@ void draw_square(t_data *img, int x, int y, int space)
 		x++;
 	}*/
 }
-int	close_win(t_vars *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
-}
-int	key_handler(int keycode, t_vars *vars)
-{
-	if (keycode == ESC)
-		close_win(vars);
-	return(0);
-}
+
 
 int main(void)
 {
@@ -81,11 +71,9 @@ int main(void)
 	//             (pointer_init, width, height, title)
 	//colunas;
 	//linhas;
-	img.img = mlx_new_image(vars.mlx, 510, 510);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-		&img.endian);
-	draw_square(&img, 5, 5, 500);
-	//ft_pixel_put(&img, 1736, 700, 0x00FF0000);
+
+	//draw_square(&img, 5, 5, 500);
+	ft_pixel_put(&img, 1736, 700, 0x00FF0000);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 705, 285); //(1920 - 510)/2 = 705; (1080 - 510)/2 = 285
 	//(                       ,cordenadas de onde queres meter a imagem)
 	mlx_hook(vars.win, 2, 1L<<0, key_handler, &vars);

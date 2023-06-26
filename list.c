@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:32:37 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/23 19:23:48 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:26:26 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ void	create_stack(t_list *stack)
 {
 	stack->head = NULL;
 	stack->edge = 10;
-	stack->angle = 120;
 	stack->size = 0;
 }
 
 void	insert_last(t_list *stack, t_node *new)
 {
-	static int	index = 0;
-	t_node		*new;
-
 	if (stack->head == NULL)
 	{
 		stack->head = new;
@@ -58,4 +54,4 @@ void	free_stack(t_list *stack)
 	}
 	stack->head = NULL;
 	stack->size = 0;
-}*/
+}

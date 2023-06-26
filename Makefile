@@ -6,7 +6,7 @@
 #    By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 12:57:07 by rimarque          #+#    #+#              #
-#    Updated: 2023/06/23 18:52:36 by rimarque         ###   ########.fr        #
+#    Updated: 2023/06/24 19:03:51 by rimarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC = $(SRC_PATH)/fdf.c \
 		$(SRC_PATH)/read_map.c \
 		$(SRC_PATH)/list.c \
 		$(SRC_PATH)/math.c \
+		$(SRC_PATH)/draw_map.c \
 
 
 #OBJ_MAND = $(SRC_MAND)/

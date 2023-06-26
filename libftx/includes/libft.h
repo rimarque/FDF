@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimarque <rimarque>                        +#+  +:+       +#+        */
+/*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:48:02 by rimarque          #+#    #+#             */
-/*   Updated: 2023/05/23 16:18:31 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:59:50 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char		**ft_split(char const *s, char c);
 char		**ft_quotes(char const *s, char c);
 void		ft_free_str(char **str);
 void		ft_free_array(char	***array);
-void		print_array(char	**array);
+void		print_arr(char **arr);
+void		print_matrix(char ***matrix);
 
 #endif

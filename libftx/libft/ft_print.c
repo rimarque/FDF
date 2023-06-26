@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 18:08:00 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/24 19:27:03 by rimarque         ###   ########.fr       */
+/*   Created: 2023/06/24 13:33:23 by rimarque          #+#    #+#             */
+/*   Updated: 2023/06/26 18:59:43 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "../includes/libft.h"
 
-float	ft_proj_x(int x, int y, long long z)
+void	print_arr(char **arr)
 {
-	return(x + cos(ANGLE) + y * cos(ANGLE + 2) + z * cos(ANGLE - 2));
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		ft_putstr_fd(arr[i], 1);
+		write(1, "\n", 1);
+		i++;
+	}
 }
 
-float	ft_proj_y(int x, int y, long long z)
+void	print_matrix(char ***matrix)
 {
-	return(x * sin(ANGLE) + y * sin(ANGLE + 2) + z * sin(ANGLE -2));
+	int i;
+	i = 0;
+	while(matrix[i])
+	{
+		print_arr(matrix[i]);
+		write(1, "\n", 1);
+		i++;
+	}
 }
 
