@@ -33,5 +33,23 @@ void	ft_free_array(char	***array)
 		array[0][i] = NULL;
 		i++;
 	}
+	*array = NULL;
 	free(*array);
 }
+
+void	ft_free_matrix(char	****matrix)
+{
+	int	i;
+
+	if (*matrix == NULL)
+		return ;
+	i = 0;
+	while (matrix[0][i])
+	{
+		ft_free_array(&matrix[0][i]);
+		i++;
+	}
+	*matrix = NULL;
+	free(*matrix);
+}
+

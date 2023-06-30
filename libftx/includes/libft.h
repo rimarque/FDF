@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:48:02 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/26 18:59:50 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/06/30 22:45:06 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
-long long	ft_atoi(const char *nptr);
+int			ft_atoi(const char *nptr);
 void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strdup(const char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
@@ -64,6 +64,7 @@ char		**ft_split(char const *s, char c);
 char		**ft_quotes(char const *s, char c);
 void		ft_free_str(char **str);
 void		ft_free_array(char	***array);
+void		ft_free_matrix(char	****matrix);
 void		print_arr(char **arr);
 void		print_matrix(char ***matrix);
 

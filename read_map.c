@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:25:40 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/26 22:24:46 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/06/30 22:43:39 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	print_stack(t_list	map)
 	count = 0;
 	while(count++ < map.size)
 	{
-		printf("(%d, %d) (%2.f, %2.f)\n", element->src_x, element->src_y, element->dst_x, element->dst_y);
+		printf("(%d, %d) (%d, %d)\n", element->src_x, element->src_y, element->dst_x, element->dst_y);
 		element = element->next;
 	}
 }
 
-void	set_limits(t_list *map)
+/*void	set_limits(t_list *map)
 {
 	t_node	*point_a;
 	t_node	*point_b;
@@ -44,13 +44,18 @@ void	set_limits(t_list *map)
 		point_b = point_b->prev;
 	//printf("A:(%d, %d) (%2.f, %2.f)\n", point_a->src_x, point_a->src_y, point_a->dst_x, point_a->dst_y);
 	//printf("B:(%d, %d) (%2.f, %2.f)\n", point_b->src_x, point_b->src_y, point_b->dst_x, point_b->dst_y);
-	map->dst_width = point_a->dst_x - point_b->dst_x;
-	map->dst_height = map->head->prev->dst_y - map->head->dst_y;
-	//diferenca entre o y do 1 e ultimo pontos + 1 porque as coordenadas comecam em zero??
+	map->dst_width = point_a->dst_x - point_b->dst_x + 1;
+	map->dst_height = map->head->prev->dst_y - map->head->dst_y + 1; //tem problema aqui com o 10-70
+	//diferenca entre o y do 1 e ultimo pontos + 1
 	//diferenca entre o x dos outros 2 cantos
 	//printf("%2.f, %2.f\n", map->dst_width , map->dst_height);
+}*/
+void	set_limits(t_list *map)
+{
+	map->dst_width = biggest_x(*map) + 1;
+	map->dst_height =  biggest_y(*map) + 1;
 }
-t_node	*create_node(int x, int y, long long z, t_list map)
+t_node	*create_node(int x, int y, int z, t_list map)
 {
 	t_node	*point;
 
@@ -61,20 +66,27 @@ t_node	*create_node(int x, int y, long long z, t_list map)
 	point->src_y = y;
 	x = x * map.edge;
 	y = y * map.edge;
+	z *= map.z_scale;
 	point->dst_x = ft_proj_x(x, y, z);
+	//point->dst_x = ft_proj_x(x, y);
 	point->dst_y = ft_proj_y(x, y, z);
+	//IMPRIMIR MAPA SEM PROJECAO
+	//point->dst_x = x;
+	//point->dst_y = y;
 	//printf("source x: %d, source y: %d, dst x: %.2f, dst y: %.2f\n", point->src_x, point->src_y, point->dst_x, point->dst_y);
 	return(point);
 }
 
 //cria o mapa da esquerda para a direita
-//map[y][x][0] --> na posicao 0 esta o conteudo de z
+//map[y][x] --> na posicao 0 esta o conteudo de z
 void	create_map(t_list *map, char ***matrix)
 {
 	t_node	*point;
 	int	y;
 	int x;
+	float offset;
 
+	set_z_scale(map, matrix);
 	//ft_printf("colums: %d\n", colums);
 	y = 0;
 	//ft_printf("OI\n");
@@ -93,19 +105,24 @@ void	create_map(t_list *map, char ***matrix)
 		}
 		y++;
 	}
+	ft_free_matrix(&matrix);
+	offset = calc_offset_x(*map);
+	if(offset)
+		increase_x(map, offset);
+	offset = calc_offset_y(*map);
+	if(offset)
+		increase_y(map, offset);
 	//print_stack(*map);
 	set_limits(map);
 }
-int	count_num(char *str)
+int	count_num(char **array)
 {
 	int count;
 
 	count = 0;
-	while(*str)
+	while(array[count])
 	{
-		if(ft_isdigit(*str))
-			count++;
-		str++;
+		count++;
 	}
 	return(count);
 }
@@ -135,6 +152,7 @@ void	read_map(t_list	*map, char *file)
 		if(line == NULL)
 			break;
 		str = ft_strjoinfree(str, line);
+		ft_free_str(&line);
 		y++;
 	}
 	close(fd);
@@ -142,8 +160,10 @@ void	read_map(t_list	*map, char *file)
 	//ft_printf("y: %d\n", y);
 	array = ft_calloc(y, sizeof(char *));
 	array = ft_split(str, '\n');
-	map->src_x_max = count_num(array[0]) - 1;
+	ft_free_str(&str);
+	//map->src_x_max = count_num(array[0]) - 1;
 	map->src_y_max = y - 1;
+	//ft_printf("y: %d, x: %d\n", map->src_y_max, map->src_x_max);
 	//ft_printf("y: %d\n", y);
 	matrix = ft_calloc(y + 1, sizeof(char **));
 	i = 0;
@@ -153,8 +173,9 @@ void	read_map(t_list	*map, char *file)
 		i++;
 	}
 	matrix[i] = NULL;
-	//map[y][x] --> na posicao x esta o conteudo = z
-	//print_matrix(matrix);
+	ft_free_array(&array);
+	map->src_x_max = count_num(matrix[0]) - 1;
+	set_scale(map);
 	create_map(map, matrix);
 }
 
