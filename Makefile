@@ -6,7 +6,7 @@
 #    By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 12:57:07 by rimarque          #+#    #+#              #
-#    Updated: 2023/06/29 16:37:37 by rimarque         ###   ########.fr        #
+#    Updated: 2023/07/01 15:10:46 by rimarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,12 +75,6 @@ $(NAME): $(OBJ_MAND) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(SRC) $(MLX) $(CMLX) $(LIBFT) -o $(NAME)
 	echo "$(GREEN)Program READY!$(RESET)"
 
-#bonus: $(NAME_BONUS)
-
-#$(NAME_BONUS): $(OBJ_BONUS) $(OBJ) $(LIBFT)
-#		$(CC) $(CFLAGS) $(OBJ_BONUS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME_BONUS)
-#		echo "$(GREEN)Bonus READY!$(RESET)"
-
 clean:
 	make clean $(NPD) -C $(LIBFT_PATH)
 	make clean $(NPD) -C $(MLX_PATH)
@@ -97,7 +91,27 @@ fclean: clean
 
 re: fclean all
 
-bre: fclean bonus
+run: all clean
+		echo ""
+#		valgrind --leak-check=full ./fdf maps/10-2.fdf
+#		valgrind --leak-check=full ./fdf maps/10-70.fdf
+#		valgrind --leak-check=full ./fdf maps/20-60.fdf
+		valgrind --leak-check=full ./fdf maps/42.fdf
+#		valgrind --leak-check=full ./fdf maps/50-4.fdf
+#		valgrind --leak-check=full ./fdf maps/100-6.fdf
+#		valgrind --leak-check=full ./fdf maps/basictest.fdf
+#		valgrind --leak-check=full ./fdf maps/elem-col.fdf
+#		valgrind --leak-check=full ./fdf maps/elem-fract.fdf
+#		valgrind --leak-check=full ./fdf maps/elem.fdf
+#		valgrind --leak-check=full ./fdf maps/plat.fdf
+#		valgrind --leak-check=full ./fdf maps/pnp_flat.fdf
+#		valgrind --leak-check=full ./fdf maps/julia.fdf
+#		valgrind --leak-check=full ./fdf maps/mars.fdf
+#		valgrind --leak-check=full ./fdf maps/pylone.fdf
+#		valgrind --leak-check=full ./fdf maps/pyra.fdf
+#		valgrind --leak-check=full ./fdf maps/pyramide.fdf
+#		valgrind --leak-check=full ./fdf maps/t1.fdf
+#		valgrind --leak-check=full ./fdf maps/t2.fdf
 
 .SILENT:
 

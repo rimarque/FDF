@@ -22,8 +22,8 @@ typedef struct	s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	float	width;
-	float	height;
+	int		x_init;
+	int		y_init;
 }t_data;
 
 typedef struct s_vars
@@ -67,6 +67,17 @@ typedef struct s_list
 	t_vars			*init;
 }t_list;
 
+typedef struct s_line
+{
+	float	dif_x;
+	float	dif_y;
+	float	n_step;
+	float	x_step;
+	float	y_step;
+	float	x;
+	float	y;
+}t_line;
+
 //LIST
 void	create_stack(t_list *stack);
 void	insert_last(t_list *stack, t_node *new);
@@ -99,5 +110,8 @@ int	biggest_y(t_list stack);
 int	smallest_x(t_list stack);
 int	smallest_y(t_list stack);
 
+int	count_num(char **array);
+int	small_line(char	***matrix, int y);
+int	smallest_nbr(int *numbers, int y);
 
 #endif

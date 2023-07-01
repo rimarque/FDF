@@ -33,8 +33,8 @@ void	ft_free_array(char	***array)
 		array[0][i] = NULL;
 		i++;
 	}
-	*array = NULL;
 	free(*array);
+	*array = NULL;
 }
 
 void	ft_free_matrix(char	****matrix)
@@ -49,7 +49,7 @@ void	ft_free_matrix(char	****matrix)
 		ft_free_array(&matrix[0][i]);
 		i++;
 	}
-	*matrix = NULL;
 	free(*matrix);
+	*matrix = NULL;
 }
 

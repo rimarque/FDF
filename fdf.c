@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:36:14 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/30 22:25:48 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/01 19:46:13 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,35 @@ int	key_handler(int keycode, t_list *map)
 		close_win(map);
 	return(0);
 }
-void	set_graphic(t_vars	*init, char* file, t_data *data, t_list map)
+void	set_graphic(t_vars	*init, char* file, t_data *img, t_list *map)
 {
 	init->mlx_ptr = mlx_init();
 	init->win_ptr = mlx_new_window(init->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, file);
-	data->width = map.dst_width;
-	data->height = map.dst_height;
-	data->img_ptr = mlx_new_image(init->mlx_ptr, map.dst_width, map.dst_height);
-	data->addr = mlx_get_data_addr(data->img_ptr, &data->bits_per_pixel, &data->line_length,
-		&data->endian);
+	img->img_ptr = mlx_new_image(init->mlx_ptr, map->dst_width, map->dst_height);
+	img->addr = mlx_get_data_addr(img->img_ptr, &img->bits_per_pixel, &img->line_length,
+		&img->endian);
+	img->x_init = (WIN_WIDTH - map->dst_width) / 2;
+	img->y_init = (WIN_HEIGHT - map->dst_height) / 2;
+	map->img = img;
+	map->init = init;
 }
 
 int	main(int argc, char **argv)
 {
 	t_list	map;
 	t_vars	init;
-	t_data	data;
-	int		x;
-	int		y;
+	t_data	img;
 
 	create_stack(&map);
-	if (argc != 2)
+	if (argc != 2 || ft_strcmp(argv[1] + ft_strclen(argv[1], '.'), ".fdf"))
+	{
+		ft_printf("fdf: INSERT <file.fdf>\n");
 		return(0);
+	}
 	read_map(&map, argv[1]);
-	set_graphic(&init, argv[1], &data, map);
-	draw_map(map, data);
-	x = (WIN_WIDTH - map.dst_width) / 2;
-	y = (WIN_HEIGHT - map.dst_height) / 2;
-	mlx_put_image_to_window(init.mlx_ptr, init.win_ptr, data.img_ptr, x, y);
-	map.img = &data;
-	map.init = &init;
+	set_graphic(&init, argv[1], &img, &map);
+	draw_map(map, img);
+	mlx_put_image_to_window(init.mlx_ptr, init.win_ptr, img.img_ptr, img.x_init, img.y_init);
 	mlx_hook(init.win_ptr, 2, 1L<<0, key_handler, &map);
 	mlx_hook(init.win_ptr, 17, 0, close_win, &map);
 	mlx_loop(init.mlx_ptr);

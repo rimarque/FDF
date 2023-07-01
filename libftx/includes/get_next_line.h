@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:10 by rimarque          #+#    #+#             */
-/*   Updated: 2023/05/24 14:25:52 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/01 18:46:04 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # endif
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int flag);
 char	*gnl_strjoin(char *temp, char **to_read);
 void	ft_strccpy(char *dst, char *src, char c);
 size_t	gnl_strclen(const char *str, char c);
