@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:29:10 by rimarque          #+#    #+#             */
-/*   Updated: 2023/05/17 18:28:44 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/03 22:28:45 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (0);
 	i = 0;
 	while (ft_strchr(set, s1[i]) && s1[i] != 0)
-			i++;
+		i++;
 	len = ft_strlen(s1);
 	if (i != len)
 	{

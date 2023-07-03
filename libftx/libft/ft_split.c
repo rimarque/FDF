@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 19:39:42 by rimarque          #+#    #+#             */
-/*   Updated: 2023/05/17 19:10:41 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/03 22:28:13 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strcount(char const *s, char c)
 	if (!*s)
 		return (0);
 	while (*s == c && *s)
-				s++;
+		s++;
 	count = 0;
 	while (*s)
 	{

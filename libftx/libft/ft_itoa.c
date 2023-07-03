@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:21:20 by rimarque          #+#    #+#             */
-/*   Updated: 2023/04/20 11:33:40 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/03 22:24:23 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ char	*ft_itoa(int n)
 	}
 	while (nbr != 0)
 	{
-			s[--len] = (nbr % 10) + '0';
-			nbr = nbr / 10;
+		s[--len] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 	}
 	return (s);
 }

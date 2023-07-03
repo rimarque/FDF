@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   aux_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:32:37 by rimarque          #+#    #+#             */
-/*   Updated: 2023/06/30 21:48:07 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/03 22:53:38 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "../includes/fdf.h"
 
 void	create_stack(t_list *stack)
 {
@@ -35,6 +35,7 @@ void	insert_last(t_list *stack, t_node *new)
 	}
 	stack->size++;
 }
+
 void	free_stack(t_list *stack)
 {
 	t_node	*element;
@@ -54,14 +55,15 @@ void	free_stack(t_list *stack)
 	stack->head = NULL;
 	stack->size = 0;
 }
+
 void	increase_x(t_list *map, float offset)
 {
-	t_node *element;
-	int	count;
+	t_node	*element;
+	int		count;
 
 	element = map->head;
 	count = 0;
-	while(count++ < map->size)
+	while (count++ < map->size)
 	{
 		element->dst_x += offset;
 		element = element->next;
@@ -70,12 +72,12 @@ void	increase_x(t_list *map, float offset)
 
 void	increase_y(t_list *map, float offset)
 {
-	t_node *element;
-	int	count;
+	t_node	*element;
+	int		count;
 
 	element = map->head;
 	count = 0;
-	while(count++ < map->size)
+	while (count++ < map->size)
 	{
 		element->dst_y += offset;
 		element = element->next;

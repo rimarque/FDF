@@ -6,7 +6,7 @@
 /*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:03:30 by rimarque          #+#    #+#             */
-/*   Updated: 2023/04/20 11:35:34 by rimarque         ###   ########.fr       */
+/*   Updated: 2023/07/03 22:30:36 by rimarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start <= len_s)
 	{
 		while (i < len_s && i < len)
-		sub_s[i++] = s[start++];
+			sub_s[i++] = s[start++];
 	}
 	sub_s[i] = 0;
 	return (sub_s);

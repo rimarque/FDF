@@ -52,4 +52,3 @@ void	ft_free_matrix(char	****matrix)
 	free(*matrix);
 	*matrix = NULL;
 }
-
