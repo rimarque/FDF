@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rita <rita@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:59:05 by rimarque          #+#    #+#             */
-/*   Updated: 2023/07/03 22:49:35 by rimarque         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:26:36 by rita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define ANGLE 120
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define SCALE 0.4
+# define SCALE 0.6
 
 typedef struct s_data
 {
