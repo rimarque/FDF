@@ -37,7 +37,7 @@ This rule will generate an executable file named `fdf`. To launch the executable
 ```sh
 $ ./fdf/maps/42.fdf
 ```
-Or, if you have your own scenes you want to render:
+Or, if you have your own maps you want to render:
 
 ```sh
 $ ./fdf ./path_to_map/map_name.rt
