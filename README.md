@@ -35,7 +35,7 @@ To compile the program you should run `make`.
 This rule will generate an executable file named `fdf`. To launch the executable you should follow this syntax:
 
 ```sh
-$ ./fdf
+$ ./fdf/maps/42.fdf
 ```
 Or, if you have your own scenes you want to render:
 
