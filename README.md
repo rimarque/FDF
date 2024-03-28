@@ -25,8 +25,8 @@ git clone git@github.com:rimarque/FDF.git
 <table align=center>
 	<tbody>
 		<tr>
-			<td><image src="img/"></td>
-			<td><image src="img/"></td>
+			<td><image src="img/42.png"></td>
+			<td><image src="img/t1.png"></td>
 		</tr>
 	</tbody>
 </table>
