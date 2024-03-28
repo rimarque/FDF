@@ -2,7 +2,6 @@
 
 ## :speech_balloon: **About**
 Fdf is a computer graphics project that uses  the school graphics library, MiniLibX,  to represent a landscape as a 3D object in which all surfaces are outlined in lines. 
-The program reads a file that contains the coordinates of the landscape and uses an algorithm to connect the dots with lines, representing it in isometric projection.
 The project is coded in C, utilizing the mlx library.
 
 ## 🙋‍♀️ **Authorship**
@@ -17,6 +16,9 @@ git clone git@github.com:rimarque/FDF.git
 ## 💎 **Features**
 ```
 - Map file parser
+- Algoritm to connect the points (self-developed)
+- Algorithm to draw a line between two points (DDA)
+- Display of a landscape in isometric projection
 ```
 
 
@@ -40,5 +42,5 @@ $ ./fdf/maps/42.fdf
 Or, if you have your own maps you want to render:
 
 ```sh
-$ ./fdf ./path_to_map/map_name.rt
+$ ./fdf ./path_to_map/map_name.fdf
 ```
