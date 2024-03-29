@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+         #
+#    By: rita <rita@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 12:57:07 by rimarque          #+#    #+#              #
-#    Updated: 2023/07/03 22:55:26 by rimarque         ###   ########.fr        #
+#    Updated: 2024/03/29 10:21:04 by rita             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ LIBFT = ./libftx/libft.a
 
 MLX = ./mlx/libmlx.a
 
+HEADERS  = ./includes/fdf.h
+
 SRC = $(SRC_PARSE_MAP)/parse_map.c \
 		$(SRC_PARSE_MAP)/create_map.c \
 		$(SRC_AUX)/aux_map.c \
@@ -65,7 +67,7 @@ $(MLX):
 	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)MLX$(RESET)"
 	make $(NPD) -C $(MLX_PATH)
 
-$(NAME): $(SRC) $(LIBFT) $(MLX)
+$(NAME): $(SRC) $(LIBFT) $(MLX) fdf.c $(HEADERS)
 	echo "[$(CYAN) Linking $(RESET)] $(GREEN)$(RESET)"
 	$(CC) $(CFLAGS) fdf.c $(SRC) $(MLX) $(CMLX) $(LIBFT) -o $(NAME)
 	echo "$(GREEN)Program READY!$(RESET)"

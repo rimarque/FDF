@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimarque <rimarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rita <rita@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:36:14 by rimarque          #+#    #+#             */
-/*   Updated: 2023/07/03 21:34:39 by rimarque         ###   ########.fr       */
+/*   Updated: 2024/03/29 10:09:14 by rita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	main(int argc, char **argv)
 	t_data	graphic;
 
 	create_stack(&map);
-	if (argc != 2 || ft_strcmp(argv[1] + ft_strclen(argv[1], '.'), ".fdf"))
+	if (argc != 2 || !ft_strrchr(argv[1], '.') ||
+		ft_strcmp(ft_strrchr(argv[1], '.'), ".fdf"))
 	{
 		ft_printf("fdf: INSERT <file.fdf>\n");
 		return (0);
